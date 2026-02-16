@@ -33,8 +33,8 @@ Tired of using Apple Music in a browser tab? This native-like Electron wrapper g
 | Keyboard media keys | ✅ |
 | Desktop notifications | ✅ |
 | AppImage & .deb packages | ✅ |
+| Lyrics display | ✅ |
 | Auto-updates | 🔜 |
-| Lyrics display | 🔜 |
 
 ## 📸 Screenshots
 
