@@ -1,7 +1,9 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, Tray, Menu, globalShortcut } = require('electron');
 const Player = require('mpris-service');
+const { exec } = require('child_process');
 
 let mainWindow;
+let tray = null;
 let mprisPlayer;
 
 function createWindow() {
@@ -69,6 +71,27 @@ function createWindow() {
     // Track playback info when page loads
     mainWindow.webContents.on('did-finish-load', () => {
         startTrackingPlayback();
+    });
+    // System tray
+    tray = new Tray(__dirname + '/icon.png');
+    const contextMenu = Menu.buildFromTemplate([
+        { label: 'Show', click: () => mainWindow.show() },
+        { label: 'Play/Pause', click: () => exec('playerctl -p chromium play-pause') },
+        { label: 'Next', click: () => exec('playerctl -p chromium next') },
+        { label: 'Previous', click: () => exec('playerctl -p chromium previous') },
+        { type: 'separator' },
+        { label: 'Quit', click: () => { app.isQuitting = true; mainWindow.destroy(); app.quit(); } }
+    ]);
+    tray.setToolTip('Apple Music');
+    tray.setContextMenu(contextMenu);
+    tray.on('click', () => mainWindow.show());
+
+    // Minimize to tray instead of closing
+    mainWindow.on('close', (event) => {
+        if (!app.isQuitting) {
+            event.preventDefault();
+            mainWindow.hide();
+        }
     });
 }
 
