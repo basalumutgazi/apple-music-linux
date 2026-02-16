@@ -70,22 +70,31 @@ curl -fsSL https://raw.githubusercontent.com/basalumutgazi/apple-music-linux/mai
 ### Option 4: Build from Source
 
 <details>
+
 <summary>Click to expand</summary>
+
+#### Clone the repository
 ```bash
 git clone https://github.com/basalumutgazi/apple-music-linux.git
 cd apple-music-linux
 npm install
+```
 
 # Download Castlabs Electron (Widevine support)
+```bash
 wget https://github.com/castlabs/electron-releases/releases/download/v40.1.0%2Bwvcus/electron-v40.1.0+wvcus-linux-x64.zip
 mkdir -p node_modules/electron/dist
 unzip electron-v40.1.0+wvcus-linux-x64.zip -d node_modules/electron/dist/
+```
 
 # Fix sandbox permissions
+```bash
 sudo chown root:root node_modules/electron/dist/chrome-sandbox
 sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
+```
 
 # Run
+```bash
 npm start
 ```
 
