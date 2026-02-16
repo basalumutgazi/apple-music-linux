@@ -21,9 +21,9 @@ function createWindow() {
 
     mainWindow.webContents.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-    mainWindow.loadURL('https://music.apple.com/tr/home/tr');
+    mainWindow.loadURL('https://music.apple.com');
 
-    // MPRIS player oluştur
+    // Create MPRIS player
     mprisPlayer = Player({
         name: 'applemusic',
         identity: 'Apple Music',
@@ -33,7 +33,7 @@ function createWindow() {
         supportedInterfaces: ['player']
     });
 
-    // MPRIS komutlarını dinle
+    // Listen for MPRIS commands
     mprisPlayer.on('playpause', () => {
         mainWindow.webContents.executeJavaScript(`
             document.querySelector('button.playback-play').click();
@@ -66,7 +66,7 @@ function createWindow() {
         `);
     });
 
-    // Sayfa yüklenince şarkı bilgisini takip et
+    // Track playback info when page loads
     mainWindow.webContents.on('did-finish-load', () => {
         startTrackingPlayback();
     });
