@@ -1,15 +1,30 @@
 {
   "name": "apple-music-linux",
   "version": "1.0.0",
-  "description": "",
+  "description": "Unofficial Apple Music client for Linux with Widevine DRM support",
   "main": "main.js",
   "scripts": {
-    "start": "./node_modules/electron/dist/electron ."
+    "start": "./node_modules/electron/dist/electron .",
+    "dist": "electron-builder --linux"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "build": {
+    "appId": "com.basalumutgazi.applemusic",
+    "productName": "Apple Music",
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "icon.svg",
+      "category": "Audio"
+    }
+  },
+  "author": {
+    "name": "basalumutgazi",
+    "email": "basalumutgazi@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "40.1.0",
+    "electron-builder": "^26.0.0"
+  },
   "dependencies": {
     "mpris-service": "^2.1.2"
   }
