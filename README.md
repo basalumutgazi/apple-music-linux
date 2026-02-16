@@ -30,11 +30,11 @@ Tired of using Apple Music in a browser tab? This native-like Electron wrapper g
 | Full song playback | ✅ |
 | Widevine DRM support | ✅ |
 | System media controls | ✅ |
-| Keyboard media keys | ✅ |
 | Desktop notifications | ✅ |
 | AppImage & .deb packages | ✅ |
 | Lyrics display | ✅ |
 | Auto-updates | 🔜 |
+| Keyboard media keys | 🔜 |
 
 ## 📸 Screenshots
 
@@ -99,16 +99,6 @@ npm start
 ```
 
 </details>
-
-## ⌨️ Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `Space` | Play/Pause |
-| `→` | Next track |
-| `←` | Previous track |
-| `↑` | Volume up |
-| `↓` | Volume down |
 
 ## 🔧 Requirements
 
